@@ -22,7 +22,9 @@ public class SingletonOne : MonoBehaviour {
 			instance = this;
 		} else {
 			print("destroying gameobject for one");
-			Destroy(gameObject);
+			if (instance != this) {
+				Destroy(gameObject);
+			}
 		}
 	}
 
