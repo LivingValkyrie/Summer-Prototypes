@@ -17,8 +17,13 @@ public class SingletonTwo : MonoBehaviour {
 
 	#endregion
 
-	void Start() {
-		instance = this;
+	void Awake() {
+		if (instance == null) {
+			instance = this;
+		} else {
+			print( "destroying gameobject for two" );
+			Destroy(gameObject);
+		}
 	}
 
 	void Update() {
@@ -29,6 +34,6 @@ public class SingletonTwo : MonoBehaviour {
 	}
 
 	public void PrintOut() {
-		print(instance.name + " has been created");
+		print(instance.name + " printout has been called" );
 	}
 }
