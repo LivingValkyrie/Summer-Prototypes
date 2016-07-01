@@ -10,16 +10,25 @@ using System.Collections.Generic;
 /// Description: Node 
 /// </summary>
 public class Node : MonoBehaviour {
-
 	#region Fields
 
+	public NodeType type;
+
+	public Material[] materials;
+
 	#endregion
-	
-	void Start () {
-	
+
+	void Start() {
+		type = (NodeType) Random.Range(0, 3);
+		GetComponent<Renderer>().material = materials[(int) type];
+		print(type);
 	}
-	
-	void Update () {
-	
-	}
+
+	void Update() {}
+}
+
+public enum NodeType {
+	Ore,
+	Wood,
+	Herb
 }

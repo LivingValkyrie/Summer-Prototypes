@@ -18,10 +18,6 @@ public class Player : MonoBehaviour {
 
 	#endregion
 	
-	void Start () {
-	
-	}
-	
 	void Update () {
 
 		float rotation = Input.GetAxis("Horizontal");
