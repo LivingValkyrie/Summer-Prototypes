@@ -13,15 +13,22 @@ public class Node : MonoBehaviour {
 	#region Fields
 
 	public NodeType type;
+	public bool isActive;
 
 	public Material[] materials;
 
 	#endregion
 
 	void Start() {
-		type = (NodeType) Random.Range(0, 3);
-		GetComponent<Renderer>().material = materials[(int) type];
-		print(type);
+		isActive = Random.Range(0, 3) == 0;
+
+		if (isActive) {
+			type = (NodeType) Random.Range(0, 3);
+			GetComponent<Renderer>().material = materials[(int) type];
+			print(type);
+		} else {
+			gameObject.SetActive(false);
+		}
 	}
 
 	void Update() {}
