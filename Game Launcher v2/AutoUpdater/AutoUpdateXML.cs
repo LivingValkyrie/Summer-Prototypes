@@ -16,48 +16,28 @@ namespace AutoUpdater {
 	/// Description: AutoUpdateXML 
 	/// </summary>
 	class AutoUpdateXML {
-		Version version;
-		Uri uri;
-		string fileName;
-		string md5;
-		string description;
-		string launchArgs;
+		#region Fields
 
-		public string LaunchArgs {
-			get { return launchArgs; }
-		}
+		internal string LaunchArgs { get; }
+		internal string Description { get; }
+		internal string Md5 { get; }
+		internal string FileName { get; }
+		internal Uri Uri { get; }
+		internal Version Version { get; }
 
-		public string Description {
-			get { return description; }
-		}
-
-		public string Md5 {
-			get { return md5; }
-		}
-
-		public string FileName {
-			get { return fileName; }
-		}
-
-		public Uri Uri {
-			get { return uri; }
-		}
-
-		public Version Version {
-			get { return version; }
-		}
+		#endregion
 
 		internal AutoUpdateXML(Version version, Uri uri, string fileName, string md5, string description, string launchArgs) {
-			this.version = version;
-			this.uri = uri;
-			this.fileName = fileName;
-			this.md5 = md5;
-			this.description = description;
-			this.launchArgs = launchArgs;
+			this.Version = version;
+			this.Uri = uri;
+			this.FileName = fileName;
+			this.Md5 = md5;
+			this.Description = description;
+			this.LaunchArgs = launchArgs;
 		}
 
 		internal bool IsNewerThan(Version version) {
-			return this.version > version;
+			return this.Version > version;
 		}
 
 		internal static bool ExistOnServer(Uri location) {
@@ -73,21 +53,21 @@ namespace AutoUpdater {
 		}
 
 		internal static AutoUpdateXML Parse(Uri location, string appID) {
-			Version tempVersion = null;
-			string tempUrl = "", tempFileName = "", tempMd5 = "", tempDescription = "", tempLaunchArgs = "";
-
 			try {
+				Version tempVersion = null;
+				string tempUrl = "", tempFileName = "", tempMd5 = "", tempDescription = "", tempLaunchArgs = "";
+
 				XmlDocument doc = new XmlDocument();
 				doc.Load(location.AbsoluteUri);
 
-				XmlNode node = doc.DocumentElement.SelectSingleNode("//update[@appID='" + appID + "']");
+				XmlNode node = doc.DocumentElement.SelectSingleNode("//update[@appId='" + appID + "']");
 
 				if (node == null) {
 					return null;
 				}
 
-				tempVersion = Version.Parse(node["latestVersion"].InnerText);
-				tempUrl = node["latestVersionUrl"].InnerText;
+				tempVersion = Version.Parse(node["version"].InnerText);
+				tempUrl = node["url"].InnerText;
 				tempFileName = node["fileName"].InnerText;
 				tempMd5 = node["md5"].InnerText;
 				tempDescription = node["description"].InnerText;
