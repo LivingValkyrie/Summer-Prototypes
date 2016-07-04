@@ -30,12 +30,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void Move() {
-		float rotation = Input.GetAxis("Horizontal");
+		float hSpeed = Input.GetAxis("Horizontal");
 		float vspeed = Input.GetAxis("Vertical");
 
-		Vector3 velocity = new Vector3(0, 0, vspeed);
+		Vector3 velocity = new Vector3(hSpeed, 0, vspeed);
 
 		transform.Translate(velocity * moveSpeed * Time.deltaTime);
-		transform.Rotate(0, rotation * rotSpeed, 0);
+		//todo fix this 
+		//transform.rotation = Quaternion.LookRotation(velocity);
+	}
+
+	void OnDrawGizmos() {
+		Gizmos.DrawRay(transform.position, transform.forward);
 	}
 }

@@ -23,19 +23,19 @@ public class Node : MonoBehaviour {
 
 	void Start() {
 		float spawnOutcome = Random.Range(0f, 1f);
-		isActive = spawnOutcome <= spawnChance;
+		isActive = (spawnOutcome <= spawnChance);
+
 		//print(spawnOutcome);
 
 		if (isActive) {
 			type = (NodeType) Random.Range(0, 3);
 			GetComponent<Renderer>().material = materials[(int) type];
+
 			//print(type);
 		} else {
 			gameObject.SetActive(false);
 		}
 	}
-
-	void Update() {}
 }
 
 public enum NodeType {
