@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 
 namespace AutoUpdater {
-	public partial class AutoUpdateDownloadForm : Form {
+	internal partial class AutoUpdateDownloadForm : Form {
 		#region Fields
 
 		WebClient webClient;
@@ -20,7 +20,7 @@ namespace AutoUpdater {
 
 		#endregion
 
-		public AutoUpdateDownloadForm(Uri location, string md5, Icon programIcon) {
+		internal AutoUpdateDownloadForm(Uri location, string md5, Icon programIcon) {
 			InitializeComponent();
 
 			if (programIcon != null) {
