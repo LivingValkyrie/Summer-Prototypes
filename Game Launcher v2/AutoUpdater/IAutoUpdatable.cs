@@ -12,7 +12,7 @@ namespace AutoUpdater {
 	/// 
 	/// Description: AutoUpdateXML 
 	/// </summary>
-	public interface IUpdatable {
+	public interface IAutoUpdatable {
 		/// <summary>
 		/// Gets the name of the application.
 		/// </summary>

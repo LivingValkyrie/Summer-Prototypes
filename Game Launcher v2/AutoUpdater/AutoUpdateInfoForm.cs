@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace AutoUpdater {
 	internal partial class AutoUpdateInfoForm : Form {
-		internal AutoUpdateInfoForm(IUpdatable applicationInfo, AutoUpdateXML updateInfo) {
+		internal AutoUpdateInfoForm(IAutoUpdatable applicationInfo, AutoUpdateXML updateInfo) {
 			InitializeComponent();
 
 			if (applicationInfo.ApplicationIcon != null) {

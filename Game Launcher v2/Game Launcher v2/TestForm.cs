@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using AutoUpdater;
 
 namespace Game_Launcher_v2 {
-	public partial class TestForm : Form, IUpdatable {
+	public partial class TestForm : Form, IAutoUpdatable {
 		public TestForm() {
 			InitializeComponent();
 
@@ -20,7 +20,7 @@ namespace Game_Launcher_v2 {
 
 		void button1_Click(object sender, EventArgs e) {}
 
-		#region IUpdatable
+		#region IAutoUpdatable
 
 		public string ApplicationName => "Test app";
 		public string ApplicationID => "TestApp";
